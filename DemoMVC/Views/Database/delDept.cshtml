@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DemoMVC.Models.EMPDATA>
+@{
+    ViewBag.Title = "delDept";
+}
+
+<h2>delDept</h2>
+@using (Html.BeginForm("delDept", "Database"))
+{
+
+    <td>Enter Empno</td>
+    <td>
+        @Html.DropDownList("ddlEmpno", new SelectList(ViewBag.EL, "Ename", "Empno", ViewBag.S), "Select", new { onblur = "func2();" })
+    </td>
+    <input type="submit" value="delEmp" onclick="func2();" />
+    if (Model != null)
+    {
+        <table>
+            <tr>
+                <td>Empno</td>
+                <td>Ename</td>
+                <td>Job</td>
+                <td>Mgr</td>
+                <td>Hiredate</td>
+                <td>Sal</td>
+                <td>Comm</td>
+                <td>Deptno</td>
+            </tr>
+            @foreach (var E in Model)
+            {
+                <tr>
+                    <td>@E.EMPNO</td>
+                    <td>@E.ENAME</td>
+                    <td>@E.JOB</td>
+                    <td>@E.MGR</td>
+                    <td>@E.HIREDATE</td>
+                    <td>@E.SAL</td>
+                    <td>@E.COMM</td>
+                    <td>@E.DEPTNO</td>
+                </tr>
+            }
+        </table>
+    }
+
+}
+<script>
+    function func2() {
+        prompt("if you want to delete(Y/N)");
+        var Empno = document.getElementById("ddlEmpno").value;
+        
+    }
+</script>
+

@@ -1,0 +1,50 @@
+﻿@model DemoMVC.Models.EMPDATA
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using(Html.BeginForm())
+{
+<table>
+    <tr>
+        <td>Empno</td>
+        <td>@Html.TextAreaFor(a => a.EMPNO)</td>
+    </tr>
+    <tr>
+        <td>Ename</td>
+        <td>@Html.TextAreaFor(a => a.ENAME)</td>
+    </tr>
+    <tr>
+        <td>Job</td>
+        <td>@Html.TextAreaFor(a => a.JOB)</td>
+    </tr>
+    <tr>
+        <td>MgrId</td>
+        <td>@Html.TextAreaFor(a => a.MGR)</td>
+    </tr>
+    <tr>
+        <td>Hiredate</td>
+        <td>@Html.TextAreaFor(a => a.HIREDATE)</td>
+    </tr>
+    <tr>
+        <td>Salary</td>
+        <td>@Html.TextAreaFor(a => a.SAL)</td>
+    </tr>
+    <tr>
+        <td>Comm</td>
+        <td>@Html.TextAreaFor(a => a.COMM)</td>
+    </tr>
+    <tr>
+        <td>Deptno</td>
+        <td>@Html.TextAreaFor(a => a.DEPTNO)</td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="Insert"/></td>
+    </tr>
+</table>
+    if (ViewBag.msg != null)
+    {
+        <h3>@ViewBag.msg</h3>
+    }
+}

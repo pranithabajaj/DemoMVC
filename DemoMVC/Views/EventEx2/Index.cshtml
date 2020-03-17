@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using(Html.BeginForm("DelEmp","EventEx2"))
+{
+<h3>
+    Enter Empno @Html.DropDownList("ddlEmpno",
+new SelectList(ViewBag.EL, "Empno", "Ename"),
+"Select")
+
+    <input type="submit" value="delete" onclick="return fun();" />
+</h3>
+    if(ViewBag.msg!=null)
+    {
+        @ViewBag.msg;
+    }
+
+}
+<script>
+    function fun() {
+        var empno = document.getElementById("ddlEmpno").value;
+        if (empno.length != 0) {
+            var c = confirm("Do you want to delete");
+            if (c == true) {
+                return true;
+            }
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+</script>

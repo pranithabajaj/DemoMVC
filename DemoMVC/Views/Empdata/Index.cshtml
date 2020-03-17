@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DemoMVC.Models.EMPDATA>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("GetEmp", "Empdata"))
+{
+    if (Model != null)
+    {
+        <table border="1">
+            <tr>
+                <th>Select</th>
+                <th>EMPNO</th>
+                <th>ENAME</th>
+                <th>JOB</th>
+                <th>MGR</th>
+                <th>HIREDATE</th>
+                <th>SAL</th>
+                <th>COMM</th>
+                <th>DEPTNO</th>
+            </tr>
+            @foreach (var E in Model)
+            {
+                <tr>
+                    <td>@Html.RadioButton("rdb", E.EMPNO)</td>
+                    <td>@E.EMPNO</td>
+                    <td>@E.ENAME</td>
+                    <td>@E.JOB</td>
+                    <td>@E.MGR</td>
+                    <td>@E.HIREDATE</td>
+                    <td>@E.SAL</td>
+                    <td>@E.COMM</td>
+                    <td>@E.DEPTNO</td>
+                </tr>
+            }
+        </table>
+    }
+    <tr>
+        <td><input type="submit" value="Submit" /></td>
+    </tr>
+}
+

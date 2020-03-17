@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DemoMVC.Models.EMPDATA>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using(Html.BeginForm("GetData","FetchDate"))
+{
+    <table>
+        <tr>
+            <td>StartDate</td>
+            <td>@Html.TextBox("txtStDate",Request["txtStDate"])</td>
+            <td>EndDate</td>
+            <td>@Html.TextBox("txtEdDate",Request["txtEdDate"])</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+if(ViewBag.D!=null)
+{
+<table border="1">
+    <tr>
+        <td>Empno</td>
+        <td>Ename</td>
+        <td>Job</td>
+        <td>Mgr</td>
+        <td>Hiredate</td>
+        <td>Sal</td>
+        <td>Comm</td>
+        <td>Deptno</td>
+    </tr>
+    @foreach (var E in ViewBag.D)
+    {
+        <tr>
+            <td>@E.EMPNO</td>
+            <td>@E.ENAME</td>
+            <td>@E.JOB</td>
+            <td>@E.MGR</td>
+            <td>@E.HIREDATE</td>
+            <td>@E.SAL</td>
+            <td>@E.COMM</td>
+            <td>@E.DEPTNO</td>
+        </tr>
+        }
+</table>
+    }
+}
+

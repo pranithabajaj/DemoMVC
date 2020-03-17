@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("GetData", "Radio"))
+{ 
+    <table>
+        <tr>
+            <td>@Html.RadioButton("rdb", "rdbDates", new { onclick = "hire();" })</td>
+            <td>StartDate</td>
+            <td>@Html.TextBox("txtStDate", Request["txtStDate"], new { @disabled = "true" })</td>
+            <td>EndDate</td>
+            <td>@Html.TextBox("txtEdDate", Request["txtEdDate"], new { @disabled = "true" })</td>
+        </tr>
+        <tr>
+            <td>@Html.RadioButton("rdb", "rdbdept", new { onclick = "dept();" })</td>
+            <td>Enter Department</td>
+            <td>@Html.DropDownList("ddlDeptno", new SelectList(ViewBag.DL, "Deptno", "Dname"), "Select", new { @disabled = "true" })</td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+
+    if (ViewBag.l != null)
+    {
+        <table border="1">
+            <tr>
+                <td>Empno</td>
+                <td>Ename</td>
+                <td>Job</td>
+                <td>Mgr</td>
+                <td>Hiredate</td>
+                <td>Sal</td>
+                <td>Comm</td>
+                <td>Deptno</td>
+            </tr>
+            @foreach (var E in ViewBag.l)
+            {
+                <tr>
+                    <td>@E.EMPNO</td>
+                    <td>@E.ENAME</td>
+                    <td>@E.JOB</td>
+                    <td>@E.MGR</td>
+                    <td>@E.HIREDATE</td>
+                    <td>@E.SAL</td>
+                    <td>@E.COMM</td>
+                    <td>@E.DEPTNO</td>
+                </tr>
+            }
+        </table>
+    }
+}
+<script>
+    function hire() {
+        document.getElementById("ddlDeptno").disabled = true;
+        document.getElementById("txtStDate").disabled = false;
+        document.getElementById("txtEdDate").disabled = false;
+    }
+    function dept() {
+        document.getElementById("ddlDeptno").disabled = false;
+        document.getElementById("txtStDate").disabled = true;
+        document.getElementById("txtEdDate").disabled = true;
+    }
+
+
+</script>
+
+
+
+
+
+
